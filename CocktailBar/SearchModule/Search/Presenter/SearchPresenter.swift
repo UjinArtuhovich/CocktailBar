@@ -8,29 +8,33 @@
 import Foundation
 
 final class SearchPresenter {
+    // MARK: - Private properties
+    
+    private unowned var view: SearchViewProtocol
+    
     // MARK: - Public properties
     
-    weak var view: SearchViewProtocol?
+    var interactor: SearchInteractorProtocol?
+    
+    // MARK: - Initializer
+    
+    init(view: SearchViewProtocol) {
+        self.view = view
+    }
 }
 
 // MARK: - SearchPresenterProtocol
 
 extension SearchPresenter: SearchPresenterProtocol {
     func showLoading() {
-        guard let view = view else { return }
-
         view.showLoading()
     }
     
     func hideLoading() {
-        guard let view = view else { return }
-
         view.hideLoading()
     }
     
     func showError(error: RequestError) {
-        guard let view = view else { return }
-
         view.showError(error: error)
     }
 }

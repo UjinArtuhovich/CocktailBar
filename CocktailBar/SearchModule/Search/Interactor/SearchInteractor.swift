@@ -11,15 +11,14 @@ final class SearchInteractor {
     // MARK: - Private properties
     
     private let apiClient: ApiClient
-    
-    // MARK: - Public properties
-    
-    weak var presenter: SearchPresenterProtocol?
+    private unowned var presenter: SearchPresenterProtocol
     
     // MARK: - Initializer
     
-    init(apiClient: ApiClient) {
+    init(apiClient: ApiClient,
+         presenter: SearchPresenterProtocol) {
         self.apiClient = apiClient
+        self.presenter = presenter
     }
 }
 
@@ -27,19 +26,19 @@ final class SearchInteractor {
 
 extension SearchInteractor: SearchInteractorProtocol {
     func search(with searchInput: String) {
-        guard let presenter = presenter else { return }
-
         presenter.showLoading()
         
-        apiClient.searchCocktails(with: searchInput) { result in
-            presenter.hideLoading()
+        apiClient.searchCocktails(with: searchInput) { [weak self] result in
+            guard let self = self else { return }
+            
+            self.presenter.hideLoading()
             
             switch result {
             case let .success(responce):
                 print(responce)
                 
             case let .failure(error):
-                presenter.showError(error: error)
+                self.presenter.showError(error: error)
             }
         }
     }
