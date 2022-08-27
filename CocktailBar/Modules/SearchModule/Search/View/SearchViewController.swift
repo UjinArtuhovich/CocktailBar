@@ -43,7 +43,8 @@ private extension SearchViewController {
         view.addSubview(activityIndicatorView)
         
         activityIndicatorView.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
             make.width.height.equalTo(50)
         }
         
