@@ -31,7 +31,11 @@ private extension SearchViewController {
     // MARK: - Private methods
     
     func setupUI() {
-        view.backgroundColor = .red
+        view.backgroundColor = .white
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView))
+        
+        view.addGestureRecognizer(tapGestureRecognizer)
         
         activityIndicatorView = .init()
         activityIndicatorView.hidesWhenStopped = true
@@ -48,11 +52,11 @@ private extension SearchViewController {
         textField.placeholder = SearchViewControllerConstants.textFieldPlaceholder
         textField.textAlignment = .center
         textField.borderStyle = .roundedRect
-//        textField.bonMotStyle = Constants.inputTextStyle
-//        textField.delegate = self
-//        textField.addTarget(self, action: #selector(changeInputText), for: .editingChanged)
-//        textField.addTarget(self, action: #selector(didBeginEditingInputText), for: .editingDidBegin)
-//        textField.addTarget(self, action: #selector(didEndEditingInputText), for: .editingDidEnd)
+        textField.layer.shadowOpacity = 0.6
+        textField.layer.shadowRadius = 5.0
+        textField.layer.shadowOffset = .zero
+        textField.layer.shadowColor = UIColor.gray.cgColor
+        textField.delegate = self
         
         view.addSubview(textField)
         
@@ -61,6 +65,29 @@ private extension SearchViewController {
             make.leading.equalToSuperview().offset(35)
             make.height.equalTo(30)
         }
+    }
+    
+    @objc func didTapView() {
+        hideKeyboard()
+    }
+    
+    @objc func stopEditingTextField(textField: UITextField) {
+    }
+}
+
+// MARK: - TextField delegate
+
+extension SearchViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        NSObject.cancelPreviousPerformRequests(
+                withTarget: self,
+                selector: #selector(stopEditingTextField),
+                object: textField)
+        
+        perform(#selector(stopEditingTextField),
+                with: textField,
+                afterDelay: 1)
+            return true
     }
 }
 
@@ -85,5 +112,9 @@ extension SearchViewController: SearchViewProtocol {
     
     func showError(error: RequestError) {
         //
+    }
+    
+    func hideKeyboard() {
+        view.endEditing(true)
     }
 }

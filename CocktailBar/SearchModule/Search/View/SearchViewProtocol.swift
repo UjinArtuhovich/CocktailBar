@@ -12,5 +12,6 @@ protocol SearchViewProtocol: AnyObject {
     func setSearchOutput(with searchOutput: [Cocktail])
     func showLoading()
     func hideLoading()
+    func hideKeyboard()
     func showError(error: RequestError)
 }
