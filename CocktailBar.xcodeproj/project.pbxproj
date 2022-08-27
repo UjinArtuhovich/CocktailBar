@@ -208,6 +208,14 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		6D04AD1328BA98C000337A0D /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				6D04ACE828BA36F400337A0D /* SearchModule */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		6D22487628B77B720069B49F = {
 			isa = PBXGroup;
 			children = (
@@ -229,17 +237,17 @@
 		6D22488128B77B730069B49F /* CocktailBar */ = {
 			isa = PBXGroup;
 			children = (
+				6D22489028B77B730069B49F /* Info.plist */,
 				6D22488228B77B730069B49F /* AppDelegate.swift */,
 				6D22488428B77B730069B49F /* SceneDelegate.swift */,
 				6D04ACFD28BA5BA400337A0D /* Coordinator */,
 				6D2248B328B77E7C0069B49F /* Entities */,
-				6D04ACE828BA36F400337A0D /* SearchModule */,
+				6D04AD1328BA98C000337A0D /* Modules */,
 				6D04ACE928BA375900337A0D /* Resources */,
 				6D04AD0528BA5DB400337A0D /* Router */,
 				6D2248B228B77E6A0069B49F /* Services */,
 				6D04AD0A28BA5EC000337A0D /* Storyboards */,
 				6D04AD0B28BA5F2400337A0D /* SwiftHelpers */,
-				6D22489028B77B730069B49F /* Info.plist */,
 			);
 			path = CocktailBar;
 			sourceTree = "<group>";
