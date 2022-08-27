@@ -10,5 +10,5 @@ import UIKit
 
 struct Cocktail {
     let title: String
-    let image: UIImage
+    let image: String
 }

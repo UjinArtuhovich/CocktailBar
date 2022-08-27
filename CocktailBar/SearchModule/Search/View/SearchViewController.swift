@@ -72,6 +72,12 @@ private extension SearchViewController {
     }
     
     @objc func stopEditingTextField(textField: UITextField) {
+        guard
+            let presenter = presenter,
+            let text = textField.text
+        else { return }
+        
+        presenter.inputChanged(to: text)
     }
 }
 
@@ -94,12 +100,7 @@ extension SearchViewController: UITextFieldDelegate {
 // MARK: - SearchViewProtocol
 
 extension SearchViewController: SearchViewProtocol {
-    func setSearchInput(with searchInput: String) {
-        //
-    }
-    
     func setSearchOutput(with searchOutput: [Cocktail]) {
-        //
     }
     
     func showLoading() {
@@ -110,7 +111,7 @@ extension SearchViewController: SearchViewProtocol {
         activityIndicatorView.stopAnimating()
     }
     
-    func showError(error: RequestError) {
+    func showError(error: String) {
         //
     }
     

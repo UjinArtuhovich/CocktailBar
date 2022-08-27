@@ -8,5 +8,7 @@
 import Foundation
 
 protocol SearchInteractorProtocol {
+    var input: String? { set get }
+    var output: [Cocktail] {set get}
     func search(with searchInput: String)
 }

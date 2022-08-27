@@ -6,12 +6,23 @@
 //
 
 import Foundation
+import SwiftUI
 
-final class SearchInteractor {
+final class SearchInteractor: SearchInteractorProtocol {
     // MARK: - Private properties
-    
+    private var outputData: [Cocktail] = []
     private let apiClient: ApiClient
     private unowned var presenter: SearchPresenterProtocol
+    
+    // MARK: - SearchInteractorProtocol properties
+    
+    var input: String? {
+        didSet {
+            guard let input = input else { return }
+            
+            search(with: input)
+        }
+    }
     
     // MARK: - Initializer
     
@@ -22,9 +33,18 @@ final class SearchInteractor {
     }
 }
 
-// MARK: - SearchInteractorProtocol methods
-
-extension SearchInteractor: SearchInteractorProtocol {
+extension SearchInteractor {
+    // MARK: - SearchInteractorProtocol methods
+    
+    var output: [Cocktail] {
+        get {
+            return outputData
+        }
+        set {
+            outputData = newValue
+        }
+    }
+    
     func search(with searchInput: String) {
         presenter.showLoading()
         
@@ -35,7 +55,10 @@ extension SearchInteractor: SearchInteractorProtocol {
             
             switch result {
             case let .success(responce):
-                print(responce)
+                guard let drinks = responce.drinks else { return }
+
+                self.output = drinks.map { .init(title: $0.name, image: $0.image) }
+                self.presenter.updateOutput()
                 
             case let .failure(error):
                 self.presenter.showError(error: error)

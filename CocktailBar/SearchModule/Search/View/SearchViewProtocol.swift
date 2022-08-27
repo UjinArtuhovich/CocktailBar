@@ -8,10 +8,9 @@
 import Foundation
 
 protocol SearchViewProtocol: AnyObject {
-    func setSearchInput(with searchInput: String)
     func setSearchOutput(with searchOutput: [Cocktail])
     func showLoading()
     func hideLoading()
     func hideKeyboard()
-    func showError(error: RequestError)
+    func showError(error: String)
 }
