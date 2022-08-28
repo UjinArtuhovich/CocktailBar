@@ -24,6 +24,12 @@
 		6D04AD0D28BA601B00337A0D /* UIViewController+toPresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D04AD0C28BA601B00337A0D /* UIViewController+toPresent.swift */; };
 		6D04AD0F28BA636400337A0D /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D04AD0E28BA636400337A0D /* SearchCoordinator.swift */; };
 		6D04AD1228BA6D2000337A0D /* SearchViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D04AD1128BA6D2000337A0D /* SearchViewControllerConstants.swift */; };
+		6D13D8AD28BAAF9A002EF5E5 /* DetailViewCintroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D13D8AC28BAAF9A002EF5E5 /* DetailViewCintroller.swift */; };
+		6D13D8AF28BAAFAB002EF5E5 /* DetailViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D13D8AE28BAAFAB002EF5E5 /* DetailViewProtocol.swift */; };
+		6D13D8B228BAB073002EF5E5 /* CocktailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D13D8B128BAB073002EF5E5 /* CocktailsView.swift */; };
+		6D13D8B728BBCA52002EF5E5 /* KeyboardHeightObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D13D8B628BBCA52002EF5E5 /* KeyboardHeightObserver.swift */; };
+		6D13D8B928BBD051002EF5E5 /* KeyboardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D13D8B828BBD051002EF5E5 /* KeyboardState.swift */; };
+		6D13D8BF28BBDDFC002EF5E5 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 6D13D8BE28BBDDFC002EF5E5 /* Toast */; };
 		6D22488328B77B730069B49F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D22488228B77B730069B49F /* AppDelegate.swift */; };
 		6D22488528B77B730069B49F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D22488428B77B730069B49F /* SceneDelegate.swift */; };
 		6D22488C28B77B730069B49F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D22488B28B77B730069B49F /* Assets.xcassets */; };
@@ -69,6 +75,11 @@
 		6D04AD0C28BA601B00337A0D /* UIViewController+toPresent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+toPresent.swift"; sourceTree = "<group>"; };
 		6D04AD0E28BA636400337A0D /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		6D04AD1128BA6D2000337A0D /* SearchViewControllerConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerConstants.swift; sourceTree = "<group>"; };
+		6D13D8AC28BAAF9A002EF5E5 /* DetailViewCintroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewCintroller.swift; sourceTree = "<group>"; };
+		6D13D8AE28BAAFAB002EF5E5 /* DetailViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewProtocol.swift; sourceTree = "<group>"; };
+		6D13D8B128BAB073002EF5E5 /* CocktailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsView.swift; sourceTree = "<group>"; };
+		6D13D8B628BBCA52002EF5E5 /* KeyboardHeightObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHeightObserver.swift; sourceTree = "<group>"; };
+		6D13D8B828BBD051002EF5E5 /* KeyboardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardState.swift; sourceTree = "<group>"; };
 		6D22487F28B77B730069B49F /* CocktailBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocktailBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D22488228B77B730069B49F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D22488428B77B730069B49F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D13D8BF28BBDDFC002EF5E5 /* Toast in Frameworks */,
 				6D2248BE28B786330069B49F /* Moya in Frameworks */,
 				6D04ACFC28BA570800337A0D /* SnapKit in Frameworks */,
 			);
@@ -114,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				6D04AD1028BA696200337A0D /* Coordinator */,
+				6D37D92928BAA26D00867AB8 /* Detail */,
 				6D04ACEA28BA39C500337A0D /* Search */,
 			);
 			path = SearchModule;
@@ -143,6 +156,7 @@
 				6D04ACEC28BA3D8600337A0D /* SearchViewController.swift */,
 				6D04AD1128BA6D2000337A0D /* SearchViewControllerConstants.swift */,
 				6D04ACEE28BA3DAE00337A0D /* SearchViewProtocol.swift */,
+				6D13D8B028BAB055002EF5E5 /* Views */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -216,6 +230,32 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
+		6D13D8AB28BAAF81002EF5E5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6D13D8AC28BAAF9A002EF5E5 /* DetailViewCintroller.swift */,
+				6D13D8AE28BAAFAB002EF5E5 /* DetailViewProtocol.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6D13D8B028BAB055002EF5E5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6D13D8B128BAB073002EF5E5 /* CocktailsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6D13D8B528BBCA36002EF5E5 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				6D13D8B628BBCA52002EF5E5 /* KeyboardHeightObserver.swift */,
+				6D13D8B828BBD051002EF5E5 /* KeyboardState.swift */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
 		6D22487628B77B720069B49F = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +295,7 @@
 		6D2248B228B77E6A0069B49F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				6D13D8B528BBCA36002EF5E5 /* Keyboard */,
 				6D2248B728B782D60069B49F /* Network */,
 			);
 			path = Services;
@@ -304,6 +345,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		6D37D92928BAA26D00867AB8 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				6D13D8AB28BAAF81002EF5E5 /* View */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -323,6 +372,7 @@
 			packageProductDependencies = (
 				6D2248BD28B786330069B49F /* Moya */,
 				6D04ACFB28BA570800337A0D /* SnapKit */,
+				6D13D8BE28BBDDFC002EF5E5 /* Toast */,
 			);
 			productName = CocktailBar;
 			productReference = 6D22487F28B77B730069B49F /* CocktailBar.app */;
@@ -399,6 +449,7 @@
 			packageReferences = (
 				6D2248BC28B786330069B49F /* XCRemoteSwiftPackageReference "Moya" */,
 				6D04ACFA28BA570800337A0D /* XCRemoteSwiftPackageReference "SnapKit" */,
+				6D13D8BD28BBDDFC002EF5E5 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 6D22488028B77B730069B49F /* Products */;
 			projectDirPath = "";
@@ -446,20 +497,25 @@
 				6D04ACEF28BA3DAE00337A0D /* SearchViewProtocol.swift in Sources */,
 				6D22488328B77B730069B49F /* AppDelegate.swift in Sources */,
 				6D22488528B77B730069B49F /* SceneDelegate.swift in Sources */,
+				6D13D8B228BAB073002EF5E5 /* CocktailsView.swift in Sources */,
 				6D04AD1228BA6D2000337A0D /* SearchViewControllerConstants.swift in Sources */,
 				6D04AD0728BA5DC500337A0D /* Router.swift in Sources */,
 				6D00773728B7D07C00A21760 /* CocktailsResponce.swift in Sources */,
 				6D04ACFF28BA5C2B00337A0D /* ApplicationCoordinator.swift in Sources */,
 				6D04AD0928BA5DD600337A0D /* RouterProtocol.swift in Sources */,
+				6D13D8AD28BAAF9A002EF5E5 /* DetailViewCintroller.swift in Sources */,
+				6D13D8B728BBCA52002EF5E5 /* KeyboardHeightObserver.swift in Sources */,
 				6D04ACED28BA3D8600337A0D /* SearchViewController.swift in Sources */,
 				6D04ACF928BA489A00337A0D /* SearchPresenterProtocol.swift in Sources */,
 				6D2248C728B7912C0069B49F /* RequestError.swift in Sources */,
 				6D00773528B7CCCC00A21760 /* ApiClient+Live.swift in Sources */,
 				6D04AD0328BA5CA000337A0D /* Coordinator.swift in Sources */,
+				6D13D8B928BBD051002EF5E5 /* KeyboardState.swift in Sources */,
 				6D04AD0F28BA636400337A0D /* SearchCoordinator.swift in Sources */,
 				6D04ACF228BA3FF600337A0D /* SearchInteractor.swift in Sources */,
 				6D04AD0D28BA601B00337A0D /* UIViewController+toPresent.swift in Sources */,
 				6D04ACF728BA487E00337A0D /* SearchPresenter.swift in Sources */,
+				6D13D8AF28BAAFAB002EF5E5 /* DetailViewProtocol.swift in Sources */,
 				6D2248C028B786A10069B49F /* Api.swift in Sources */,
 				6D2248B528B780E40069B49F /* Cocktail.swift in Sources */,
 				6D2248C328B78B5F0069B49F /* ApiClient.swift in Sources */,
@@ -796,6 +852,14 @@
 				kind = branch;
 			};
 		};
+		6D13D8BD28BBDDFC002EF5E5 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		6D2248BC28B786330069B49F /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya.git";
@@ -811,6 +875,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6D04ACFA28BA570800337A0D /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		6D13D8BE28BBDDFC002EF5E5 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D13D8BD28BBDDFC002EF5E5 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 		6D2248BD28B786330069B49F /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -22,7 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let router = Router(rootController: rootController)
         
         let apiClient = ApiClient()
-        let coordinator = ApplicationCoordinator(apiClient: apiClient, router: router)
+        let keyboardHeightObserver = KeyboardHeightObserver()
+        let coordinator = ApplicationCoordinator(apiClient: apiClient,
+                                                 keyboardHeightObserver: keyboardHeightObserver,
+                                                 router: router)
         
         window.rootViewController = rootController
         window.makeKeyAndVisible()

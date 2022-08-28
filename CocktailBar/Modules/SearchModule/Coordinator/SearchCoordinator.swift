@@ -11,6 +11,7 @@ final class SearchCoordinator: BaseCoordinator {
     // MARK: - Private properties
     
     private let apiClient: ApiClient
+    private let keyboardHeightObserver: KeyboardHeightObserver
     private let router: Router
     
     // MARK: - Public properties
@@ -20,9 +21,11 @@ final class SearchCoordinator: BaseCoordinator {
     // MARK: - Initializer
     
     init(apiClient: ApiClient,
+         keyboardHeightObserver: KeyboardHeightObserver,
          router: Router) {
-        self.router = router
         self.apiClient = apiClient
+        self.keyboardHeightObserver = keyboardHeightObserver
+        self.router = router
     }
     
     override func start() {
@@ -33,12 +36,18 @@ final class SearchCoordinator: BaseCoordinator {
     
     private func showSearchScreen() {
         let viewController = SearchViewController()
-        let presenter = SearchPresenter(view: viewController)
+        let presenter = SearchPresenter(keyboardHeightObserver: keyboardHeightObserver, view: viewController)
         let interactor = SearchInteractor(apiClient: apiClient, presenter: presenter)
         
         viewController.presenter = presenter
         presenter.interactor = interactor
       
         router.setRootModule(viewController)
+    }
+    
+    private func showDetailScreen() {
+        let viewController = DetailViewCintroller()
+        
+        router.present(viewController, animated: true)
     }
 }

@@ -11,14 +11,17 @@ final class ApplicationCoordinator: BaseCoordinator {
     // MARK: - Private properties
     
     private let apiClient: ApiClient
+    private let keyboardHeightObserver: KeyboardHeightObserver
     private let router: Router
     
     // MARK: - Initializer
     
     init(apiClient: ApiClient,
+         keyboardHeightObserver: KeyboardHeightObserver,
          router: Router) {
-        self.router = router
         self.apiClient = apiClient
+        self.keyboardHeightObserver = keyboardHeightObserver
+        self.router = router
     }
     
     override func start() {
@@ -28,7 +31,10 @@ final class ApplicationCoordinator: BaseCoordinator {
     // MARK: - Private methods
     
     private func startSearchFlow() {
-        let coordinator = SearchCoordinator(apiClient: apiClient, router: router)
+        let coordinator = SearchCoordinator(apiClient: apiClient,
+                                            keyboardHeightObserver: keyboardHeightObserver,
+                                            router: router)
+        
         coordinator.finishFlow = { [weak self, weak coordinator] in
             self?.removeDependency(coordinator)
         }

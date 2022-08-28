@@ -7,12 +7,15 @@
 
 import UIKit
 import SnapKit
+import Toast
 
 final class SearchViewController: UIViewController {
     // MARK: - Private properties
     
     private var activityIndicatorView: UIActivityIndicatorView!
     private var textField: UITextField!
+    private var noResultsLabel: UILabel!
+    private var label: UIButton!
     
     // MARK: - Public properties
     
@@ -48,6 +51,16 @@ private extension SearchViewController {
             make.width.height.equalTo(50)
         }
         
+        noResultsLabel = .init()
+        noResultsLabel.text = SearchViewControllerConstants.noResultsText
+        
+        view.addSubview(noResultsLabel)
+        
+        noResultsLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
+        }
+        
         textField = .init()
         textField.backgroundColor = .white
         textField.placeholder = SearchViewControllerConstants.textFieldPlaceholder
@@ -62,9 +75,21 @@ private extension SearchViewController {
         view.addSubview(textField)
         
         textField.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(35)
+            make.centerX.equalToSuperview()
             make.height.equalTo(30)
+            make.bottom.equalToSuperview().offset(-150)
+        }
+        
+        label = .init()
+        label.backgroundColor = .red
+        label.isHidden = true
+        
+        view.addSubview(label)
+        
+        label.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
         }
     }
     
@@ -102,9 +127,13 @@ extension SearchViewController: UITextFieldDelegate {
 
 extension SearchViewController: SearchViewProtocol {
     func setSearchOutput(with searchOutput: [Cocktail]) {
+        label.isHidden = false
+        label.setTitle(searchOutput.first?.title, for: .normal)
     }
     
     func showLoading() {
+        noResultsLabel.isHidden = true
+        label.isHidden = true
         activityIndicatorView.startAnimating()
     }
     
@@ -112,8 +141,34 @@ extension SearchViewController: SearchViewProtocol {
         activityIndicatorView.stopAnimating()
     }
     
+    func showNoResults() {
+        noResultsLabel.isHidden = false
+    }
+    
+    func keyboardWillShow(height: CGFloat) {
+        textField.snp.updateConstraints { make in
+            make.bottom.equalToSuperview().offset(-height)
+            make.leading.equalToSuperview()
+        }
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .layoutSubviews) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func keyboardWillHide() {
+        textField.snp.updateConstraints { make in
+            make.bottom.equalToSuperview().offset(-150)
+            make.leading.equalToSuperview().offset(35)
+        }
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .layoutSubviews) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     func showError(error: String) {
-        //
+        view.makeToast(error, duration: 3.0, position: .top)
     }
     
     func hideKeyboard() {
