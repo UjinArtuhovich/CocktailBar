@@ -15,7 +15,7 @@ final class SearchViewController: UIViewController {
     private var activityIndicatorView: UIActivityIndicatorView!
     private var textField: UITextField!
     private var noResultsLabel: UILabel!
-    private var label: UIButton!
+    private var cocktailsView: CocktailsView!
     
     // MARK: - Public properties
     
@@ -36,29 +36,49 @@ private extension SearchViewController {
     func setupUI() {
         view.backgroundColor = .white
         
+        cocktailsView = .init()
+        cocktailsView.isHidden = true
+        
+        view.addSubview(cocktailsView)
+        
+        cocktailsView.snp.makeConstraints { make in
+            make.centerX.leading.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(45)
+        }
+        
+        let mainView = UIView()
+        
+        view.addSubview(mainView)
+        
+        mainView.snp.makeConstraints { make in
+            make.trailing.leading.bottom.equalToSuperview()
+            make.top.equalTo(cocktailsView.snp.bottom)
+        }
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView))
         
-        view.addGestureRecognizer(tapGestureRecognizer)
+        mainView.addGestureRecognizer(tapGestureRecognizer)
         
         activityIndicatorView = .init()
         activityIndicatorView.hidesWhenStopped = true
         
-        view.addSubview(activityIndicatorView)
+        mainView.addSubview(activityIndicatorView)
         
         activityIndicatorView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
+            make.top.equalToSuperview()
             make.width.height.equalTo(50)
         }
         
         noResultsLabel = .init()
         noResultsLabel.text = SearchViewControllerConstants.noResultsText
         
-        view.addSubview(noResultsLabel)
+        mainView.addSubview(noResultsLabel)
         
         noResultsLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
+            make.top.equalToSuperview()
         }
         
         textField = .init()
@@ -72,24 +92,13 @@ private extension SearchViewController {
         textField.layer.shadowColor = UIColor.gray.cgColor
         textField.delegate = self
         
-        view.addSubview(textField)
+        mainView.addSubview(textField)
         
         textField.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(35)
             make.centerX.equalToSuperview()
             make.height.equalTo(30)
             make.bottom.equalToSuperview().offset(-150)
-        }
-        
-        label = .init()
-        label.backgroundColor = .red
-        label.isHidden = true
-        
-        view.addSubview(label)
-        
-        label.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(20)
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
         }
     }
     
@@ -107,7 +116,7 @@ private extension SearchViewController {
     }
 }
 
-// MARK: - TextField delegate
+// MARK: - UITextFieldDelegate
 
 extension SearchViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -127,13 +136,13 @@ extension SearchViewController: UITextFieldDelegate {
 
 extension SearchViewController: SearchViewProtocol {
     func setSearchOutput(with searchOutput: [Cocktail]) {
-        label.isHidden = false
-        label.setTitle(searchOutput.first?.title, for: .normal)
+        cocktailsView.isHidden = false
+        cocktailsView.input = searchOutput
     }
     
     func showLoading() {
         noResultsLabel.isHidden = true
-        label.isHidden = true
+        cocktailsView.isHidden = true
         activityIndicatorView.startAnimating()
     }
     

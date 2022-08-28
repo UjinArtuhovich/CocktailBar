@@ -8,6 +8,7 @@
 import Foundation
 
 enum SearchViewControllerConstants {
-    static let textFieldPlaceholder = "Coctail name"
+    static let textFieldPlaceholder = "Cocktail name"
     static let noResultsText = "No results"
+    static let cocktailCellReuseId = "cocktailCell"
 }
