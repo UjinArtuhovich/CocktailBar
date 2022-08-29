@@ -20,6 +20,7 @@ final class CocktailsView: UIView {
             collectionView.reloadData()
         }
     }
+    var chooseCocktail: ((Cocktail) -> Void)?
     
     // MARK: - Initializer
     
@@ -65,7 +66,7 @@ extension CocktailsView: UICollectionViewDelegate, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cocktails = input else { return }
         
-        print(cocktails[indexPath.item])
+        chooseCocktail?((cocktails[indexPath.item]))
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

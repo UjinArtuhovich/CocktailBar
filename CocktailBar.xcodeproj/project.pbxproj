@@ -40,6 +40,9 @@
 		6D2248C728B7912C0069B49F /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2248C628B7912C0069B49F /* RequestError.swift */; };
 		6D9FDFE228BBF77D00D6769F /* CocktailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9FDFE128BBF77D00D6769F /* CocktailsView.swift */; };
 		6D9FDFE428BBF83B00D6769F /* CocktailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9FDFE328BBF83B00D6769F /* CocktailCell.swift */; };
+		6D9FDFE828BCAD0200D6769F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 6D9FDFE728BCAD0200D6769F /* Kingfisher */; };
+		6D9FDFEA28BCAE0800D6769F /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9FDFE928BCAE0800D6769F /* DetailPresenter.swift */; };
+		6D9FDFEC28BCAE1200D6769F /* DetailPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9FDFEB28BCAE1200D6769F /* DetailPresenterProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +97,8 @@
 		6D2248C628B7912C0069B49F /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		6D9FDFE128BBF77D00D6769F /* CocktailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsView.swift; sourceTree = "<group>"; };
 		6D9FDFE328BBF83B00D6769F /* CocktailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailCell.swift; sourceTree = "<group>"; };
+		6D9FDFE928BCAE0800D6769F /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		6D9FDFEB28BCAE1200D6769F /* DetailPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenterProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D9FDFE828BCAD0200D6769F /* Kingfisher in Frameworks */,
 				6D13D8BF28BBDDFC002EF5E5 /* Toast in Frameworks */,
 				6D2248BE28B786330069B49F /* Moya in Frameworks */,
 				6D04ACFC28BA570800337A0D /* SnapKit in Frameworks */,
@@ -244,8 +250,8 @@
 		6D13D8B028BAB055002EF5E5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6D9FDFE128BBF77D00D6769F /* CocktailsView.swift */,
 				6D9FDFE328BBF83B00D6769F /* CocktailCell.swift */,
+				6D9FDFE128BBF77D00D6769F /* CocktailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -280,7 +286,6 @@
 		6D22488128B77B730069B49F /* CocktailBar */ = {
 			isa = PBXGroup;
 			children = (
-				6D22489028B77B730069B49F /* Info.plist */,
 				6D22488228B77B730069B49F /* AppDelegate.swift */,
 				6D22488428B77B730069B49F /* SceneDelegate.swift */,
 				6D04ACFD28BA5BA400337A0D /* Coordinator */,
@@ -291,6 +296,7 @@
 				6D2248B228B77E6A0069B49F /* Services */,
 				6D04AD0A28BA5EC000337A0D /* Storyboards */,
 				6D04AD0B28BA5F2400337A0D /* SwiftHelpers */,
+				6D22489028B77B730069B49F /* Info.plist */,
 			);
 			path = CocktailBar;
 			sourceTree = "<group>";
@@ -351,9 +357,19 @@
 		6D37D92928BAA26D00867AB8 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				6D9FDFE528BCAB2F00D6769F /* Presenter */,
 				6D13D8AB28BAAF81002EF5E5 /* View */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		6D9FDFE528BCAB2F00D6769F /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				6D9FDFE928BCAE0800D6769F /* DetailPresenter.swift */,
+				6D9FDFEB28BCAE1200D6769F /* DetailPresenterProtocol.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,6 +392,7 @@
 				6D2248BD28B786330069B49F /* Moya */,
 				6D04ACFB28BA570800337A0D /* SnapKit */,
 				6D13D8BE28BBDDFC002EF5E5 /* Toast */,
+				6D9FDFE728BCAD0200D6769F /* Kingfisher */,
 			);
 			productName = CocktailBar;
 			productReference = 6D22487F28B77B730069B49F /* CocktailBar.app */;
@@ -453,6 +470,7 @@
 				6D2248BC28B786330069B49F /* XCRemoteSwiftPackageReference "Moya" */,
 				6D04ACFA28BA570800337A0D /* XCRemoteSwiftPackageReference "SnapKit" */,
 				6D13D8BD28BBDDFC002EF5E5 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				6D9FDFE628BCAD0200D6769F /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 6D22488028B77B730069B49F /* Products */;
 			projectDirPath = "";
@@ -514,6 +532,7 @@
 				6D9FDFE428BBF83B00D6769F /* CocktailCell.swift in Sources */,
 				6D00773528B7CCCC00A21760 /* ApiClient+Live.swift in Sources */,
 				6D04AD0328BA5CA000337A0D /* Coordinator.swift in Sources */,
+				6D9FDFEC28BCAE1200D6769F /* DetailPresenterProtocol.swift in Sources */,
 				6D13D8B928BBD051002EF5E5 /* KeyboardState.swift in Sources */,
 				6D04AD0F28BA636400337A0D /* SearchCoordinator.swift in Sources */,
 				6D04ACF228BA3FF600337A0D /* SearchInteractor.swift in Sources */,
@@ -521,6 +540,7 @@
 				6D04ACF728BA487E00337A0D /* SearchPresenter.swift in Sources */,
 				6D13D8AF28BAAFAB002EF5E5 /* DetailViewProtocol.swift in Sources */,
 				6D2248C028B786A10069B49F /* Api.swift in Sources */,
+				6D9FDFEA28BCAE0800D6769F /* DetailPresenter.swift in Sources */,
 				6D2248B528B780E40069B49F /* Cocktail.swift in Sources */,
 				6D2248C328B78B5F0069B49F /* ApiClient.swift in Sources */,
 				6D04AD0128BA5C9900337A0D /* BaseCoordinator.swift in Sources */,
@@ -876,6 +896,14 @@
 				kind = branch;
 			};
 		};
+		6D9FDFE628BCAD0200D6769F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -893,6 +921,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6D2248BC28B786330069B49F /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
+		};
+		6D9FDFE728BCAD0200D6769F /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D9FDFE628BCAD0200D6769F /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

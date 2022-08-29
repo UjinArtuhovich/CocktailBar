@@ -16,4 +16,5 @@ protocol SearchPresenterProtocol: AnyObject {
     func showError(error: RequestError)
     func updateOutput()
     func inputChanged(to newInput: String)
+    func chooseCocktail(input: Cocktail)
 }

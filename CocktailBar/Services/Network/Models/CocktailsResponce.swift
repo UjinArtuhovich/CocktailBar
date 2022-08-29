@@ -15,12 +15,12 @@ enum CocktailsResponce {
     struct Cocktail: Decodable {
         let id: String
         let name: String
-        let image: String
+        let imageUrl: String
         
         enum CodingKeys: String, CodingKey {
             case id = "idDrink"
             case name = "strDrink"
-            case image = "strDrinkThumb"
+            case imageUrl = "strDrinkThumb"
         }
     }
 }
