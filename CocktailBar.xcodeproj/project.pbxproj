@@ -255,10 +255,6 @@
 			children = (
 				6D1015AB28BCE035001300E6 /* Manager */,
 				6D1015AA28BCE020001300E6 /* Models */,
-				6D1015B128BCE0E7001300E6 /* SearchRequest+CoreDataClass.swift */,
-				6D1015B228BCE0E7001300E6 /* SearchRequest+CoreDataProperties.swift */,
-				6D1015B328BCE0E7001300E6 /* SearchResult+CoreDataClass.swift */,
-				6D1015B428BCE0E7001300E6 /* SearchResult+CoreDataProperties.swift */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -266,6 +262,10 @@
 		6D1015AA28BCE020001300E6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6D1015B128BCE0E7001300E6 /* SearchRequest+CoreDataClass.swift */,
+				6D1015B228BCE0E7001300E6 /* SearchRequest+CoreDataProperties.swift */,
+				6D1015B328BCE0E7001300E6 /* SearchResult+CoreDataClass.swift */,
+				6D1015B428BCE0E7001300E6 /* SearchResult+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
