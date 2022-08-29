@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="SearchRequest" representedClassName=".SearchRequest" syncable="YES">
+        <attribute name="imageUrl" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="result" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SearchResult" inverseName="request" inverseEntity="SearchResult"/>
+    </entity>
+    <entity name="SearchResult" representedClassName=".SearchResult" syncable="YES">
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="request" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SearchRequest" inverseName="result" inverseEntity="SearchRequest"/>
+    </entity>
+    <elements>
+        <element name="SearchRequest" positionX="-524.8515625" positionY="138.41015625" width="128" height="88"/>
+        <element name="SearchResult" positionX="-54" positionY="-9" width="128" height="73"/>
+    </elements>
+</model>
