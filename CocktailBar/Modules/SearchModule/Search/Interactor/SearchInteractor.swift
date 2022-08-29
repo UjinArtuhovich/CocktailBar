@@ -13,6 +13,7 @@ final class SearchInteractor: SearchInteractorProtocol {
     
     private var outputData: [Cocktail] = []
     private let apiClient: ApiClient
+    private let searchDataBaseManager: SearchDataBaseManager
     private unowned var presenter: SearchPresenterProtocol
     
     // MARK: - SearchInteractorProtocol properties
@@ -37,8 +38,10 @@ final class SearchInteractor: SearchInteractorProtocol {
     // MARK: - Initializer
     
     init(apiClient: ApiClient,
+         searchDataBaseManager: SearchDataBaseManager,
          presenter: SearchPresenterProtocol) {
         self.apiClient = apiClient
+        self.searchDataBaseManager = searchDataBaseManager
         self.presenter = presenter
     }
 }
@@ -49,6 +52,24 @@ extension SearchInteractor {
     func search(with searchInput: String) {
         presenter.showLoading()
         
+        searchDataBaseManager.getSearchResults(by: searchInput) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case let .success(responce):
+                
+                self.presenter.hideLoading()
+                
+                self.output = responce.map { .init(title: $0.title ?? "", imageUrl: $0.imageUrl ?? "") }
+                self.presenter.updateOutput()
+                
+            case .failure:
+                self.searchwithServer(with: searchInput)
+            }
+        }
+    }
+    
+    func searchwithServer(with searchInput: String) {
         apiClient.searchCocktails(with: searchInput) { [weak self] result in
             guard let self = self else { return }
             
@@ -58,12 +79,12 @@ extension SearchInteractor {
             case let .success(responce):
                 guard let drinks = responce.drinks else {
                     self.presenter.noResults()
-                    
                     return
                 }
 
                 self.output = drinks.map { .init(title: $0.name, imageUrl: $0.imageUrl) }
                 self.presenter.updateOutput()
+                self.searchDataBaseManager.createSearchRequest(with: searchInput, with: self.output)
                 
             case let .failure(error):
                 self.presenter.noResults()

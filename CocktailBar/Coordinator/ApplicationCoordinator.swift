@@ -11,15 +11,18 @@ final class ApplicationCoordinator: BaseCoordinator {
     // MARK: - Private properties
     
     private let apiClient: ApiClient
+    private let searchDataBaseManager: SearchDataBaseManager
     private let keyboardHeightObserver: KeyboardHeightObserver
     private let router: Router
     
     // MARK: - Initializer
     
     init(apiClient: ApiClient,
+         searchDataBaseManager: SearchDataBaseManager,
          keyboardHeightObserver: KeyboardHeightObserver,
          router: Router) {
         self.apiClient = apiClient
+        self.searchDataBaseManager = searchDataBaseManager
         self.keyboardHeightObserver = keyboardHeightObserver
         self.router = router
     }
@@ -32,6 +35,7 @@ final class ApplicationCoordinator: BaseCoordinator {
     
     private func startSearchFlow() {
         let coordinator = SearchCoordinator(apiClient: apiClient,
+                                            searchDataBaseManager: searchDataBaseManager,
                                             keyboardHeightObserver: keyboardHeightObserver,
                                             router: router)
         

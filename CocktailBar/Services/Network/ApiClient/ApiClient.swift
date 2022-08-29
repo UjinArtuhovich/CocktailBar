@@ -9,8 +9,6 @@ import Foundation
 import Moya
 
 class ApiClient {
-    // MARK: - Public properties
-    
     let provider = MoyaProvider<Api>()
     
     func request<Output: Decodable>(_ target: Api, output: Output.Type, completion: @escaping ((Result<Output, RequestError>) -> Void)) {

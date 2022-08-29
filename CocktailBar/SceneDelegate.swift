@@ -22,8 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let router = Router(rootController: rootController)
         
         let apiClient = ApiClient()
+        let searchDataBaseManager = SearchDataBaseManager()
         let keyboardHeightObserver = KeyboardHeightObserver()
         let coordinator = ApplicationCoordinator(apiClient: apiClient,
+                                                 searchDataBaseManager: searchDataBaseManager,
                                                  keyboardHeightObserver: keyboardHeightObserver,
                                                  router: router)
         

@@ -11,6 +11,7 @@ final class SearchCoordinator: BaseCoordinator {
     // MARK: - Private properties
     
     private let apiClient: ApiClient
+    private let searchDataBaseManager: SearchDataBaseManager
     private let keyboardHeightObserver: KeyboardHeightObserver
     private let router: Router
     
@@ -21,9 +22,11 @@ final class SearchCoordinator: BaseCoordinator {
     // MARK: - Initializer
     
     init(apiClient: ApiClient,
+         searchDataBaseManager: SearchDataBaseManager,
          keyboardHeightObserver: KeyboardHeightObserver,
          router: Router) {
         self.apiClient = apiClient
+        self.searchDataBaseManager = searchDataBaseManager
         self.keyboardHeightObserver = keyboardHeightObserver
         self.router = router
     }
@@ -37,7 +40,9 @@ final class SearchCoordinator: BaseCoordinator {
     private func showSearchScreen() {
         let viewController = SearchViewController()
         let presenter = SearchPresenter(keyboardHeightObserver: keyboardHeightObserver, view: viewController)
-        let interactor = SearchInteractor(apiClient: apiClient, presenter: presenter)
+        let interactor = SearchInteractor(apiClient: apiClient,
+                                          searchDataBaseManager: searchDataBaseManager,
+                                          presenter: presenter)
         
         presenter.showDetail = { input in
             self.showDetailScreen(with: input)
