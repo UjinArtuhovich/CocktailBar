@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import Alamofire
 
 class SearchDataBaseManager {
     // MARK: - Core Data stack
