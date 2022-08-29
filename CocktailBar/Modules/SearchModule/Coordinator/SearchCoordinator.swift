@@ -39,14 +39,25 @@ final class SearchCoordinator: BaseCoordinator {
         let presenter = SearchPresenter(keyboardHeightObserver: keyboardHeightObserver, view: viewController)
         let interactor = SearchInteractor(apiClient: apiClient, presenter: presenter)
         
+        presenter.showDetail = { input in
+            self.showDetailScreen(with: input)
+        }
+        
         viewController.presenter = presenter
         presenter.interactor = interactor
       
         router.setRootModule(viewController)
     }
     
-    private func showDetailScreen() {
+    private func showDetailScreen(with input: Cocktail) {
         let viewController = DetailViewCintroller()
+        let presenter = DetailPresenter(input: input, view: viewController)
+        
+        presenter.closeDetail = {
+            self.router.dismissModule()
+        }
+        
+        viewController.presenter = presenter
         
         router.present(viewController, animated: true)
     }

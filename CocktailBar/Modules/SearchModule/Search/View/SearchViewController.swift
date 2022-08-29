@@ -27,6 +27,7 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        setupItems()
     }
 }
 
@@ -102,6 +103,19 @@ private extension SearchViewController {
         }
     }
     
+    func setupItems() {
+        cocktailsView.chooseCocktail = { [weak self] input in
+            guard
+                let self = self,
+                let presenter = self.presenter
+            else { return }
+            
+            presenter.chooseCocktail(input: input)
+        }
+    }
+    
+    // MARK: - objc methods
+    
     @objc func didTapView() {
         hideKeyboard()
     }
@@ -160,7 +174,9 @@ extension SearchViewController: SearchViewProtocol {
             make.leading.equalToSuperview()
         }
         
-        UIView.animate(withDuration: 0.5, delay: 0, options: .layoutSubviews) {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .layoutSubviews) { [weak self] in
+            guard let self = self else { return }
+            
             self.view.layoutIfNeeded()
         }
     }
@@ -171,7 +187,9 @@ extension SearchViewController: SearchViewProtocol {
             make.leading.equalToSuperview().offset(35)
         }
         
-        UIView.animate(withDuration: 0.5, delay: 0, options: .layoutSubviews) {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .layoutSubviews) { [weak self] in
+            guard let self = self else { return }
+            
             self.view.layoutIfNeeded()
         }
     }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol DetailViewProtocol {
-    
+protocol DetailViewProtocol: AnyObject {
+    func setOutput(with output: Cocktail)
 }
 

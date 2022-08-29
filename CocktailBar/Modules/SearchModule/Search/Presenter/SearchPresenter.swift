@@ -8,6 +8,7 @@
 import Foundation
 
 final class SearchPresenter: SearchPresenterProtocol {
+    
     // MARK: - Private properties
     
     private var keyboardHeightObserver: KeyboardHeightObserver
@@ -16,6 +17,7 @@ final class SearchPresenter: SearchPresenterProtocol {
     // MARK: - Public properties
     
     var interactor: SearchInteractorProtocol?
+    var showDetail: ((Cocktail) -> Void)?
     
     // MARK: - SearchPresenterProtocol properties
     
@@ -97,5 +99,9 @@ extension SearchPresenter {
     
     func inputChanged(to newInput: String) {
         input = newInput
+    }
+    
+    func chooseCocktail(input: Cocktail) {
+        showDetail?(input)
     }
 }

@@ -62,7 +62,7 @@ extension SearchInteractor {
                     return
                 }
 
-                self.output = drinks.map { .init(title: $0.name, imageUrl: $0.image) }
+                self.output = drinks.map { .init(title: $0.name, imageUrl: $0.imageUrl) }
                 self.presenter.updateOutput()
                 
             case let .failure(error):
